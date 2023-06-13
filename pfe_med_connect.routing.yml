@@ -1,0 +1,7 @@
+pfe_med_connect.upload_form:
+  path: '/med-connect/upload'
+  defaults:
+    _form: '\Drupal\pfe_med_connect\Form\MedConnectForm'
+    _title: 'Med Connect Upload'
+  requirements:
+    _permission: 'access content'
