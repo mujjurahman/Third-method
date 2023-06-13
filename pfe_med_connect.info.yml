@@ -1,4 +1,4 @@
-name: 'PFE Med Connect'
+name: 'PFE Med Connect_3'
 type: module
 description: 'Custom module for Med Connect functionality.'
 core_version_requirement: ^9
