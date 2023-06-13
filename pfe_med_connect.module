@@ -1,0 +1,68 @@
+<?php
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_install().
+ */
+function pfe_med_connect_install() {
+  // Create the custom table on module installation.
+  pfe_med_connect_create_table();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function pfe_med_connect_uninstall() {
+  // Drop the custom table on module uninstallation.
+  pfe_med_connect_drop_table();
+}
+
+/**
+ * Helper function to create the custom table.
+ */
+function pfe_med_connect_create_table() {
+  $schema = Database::getConnection()->schema();
+  $table_name = $schema->escapeTable('med_connect_table');
+  $schema->createTable($table_name, [
+    'id' => [
+      'type' => 'serial',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+    ],
+    'produit' => [
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => TRUE,
+    ],
+    'aire_therapeutique' => [
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => TRUE,
+    ],
+    'departement' => [
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => TRUE,
+    ],
+    'rmr_email' => [
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => TRUE,
+    ],
+    'backup_email' => [
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => TRUE,
+    ],
+  ]);
+}
+
+/**
+ * Helper function to drop the custom table.
+ */
+function pfe_med_connect_drop_table() {
+  $schema = Database::getConnection()->schema();
+  $table_name = $schema->escapeTable('med_connect_table');
+  $schema->dropTable($table_name);
+}
